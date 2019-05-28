@@ -108,7 +108,6 @@ return [
     */
 
     'menu' => [
-            
         [
             'text' => 'Registrar Incidente',
             'url'  => 'incidents/create',
@@ -117,6 +116,16 @@ return [
         [
             'text' => 'Listar Incidents',
             'url'  => 'incidents/index',
+            'icon' => 'list',
+        ],
+        [
+            'text' => 'Registrar Tipos Incidente',
+            'url'  => 'incidents/types/create',
+            'icon' => 'save',
+        ],
+        [
+            'text' => 'Listar Tipos Incidente',
+            'url'  => 'incidents/types/index',
             'icon' => 'list',
         ],
     ],

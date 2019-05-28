@@ -5,20 +5,19 @@ namespace Modules\Incidents\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Incidents\Entities\Incident;
+use Modules\Incidents\Entities\TypesIncident;
 use Modules\Incidents\Repositories\IncidentsRepository;  
 use Modules\Incidents\Repositories\TypeIncidentsRepository;
-use Modules\Incidents\Http\Requests\IncidentsSaveRequest;
+use Modules\Incidents\Http\Requests\TypeIncidentsSaveRequest;
 use View;
 
-class IncidentsController extends Controller
+class TypesIncidentsController extends Controller
 {
 
     public function __construct() 
     {
         $this->incident_repository = new IncidentsRepository();
         $this->type_incident_repository = new TypeIncidentsRepository();
-        View::share ( 'types_incidents', $this->type_incident_repository->getTypesIncidents() ); 
         View::share ( 'criticality', $this->incident_repository->getCriticality() );
     }
     /**
@@ -27,8 +26,8 @@ class IncidentsController extends Controller
      */
     public function index()
     {
-        $incidents = $this->incident_repository->getIncidents(); 
-        return view('incidents::index',compact('incidents'));
+        $tp_incidents = $this->type_incident_repository->getTypesIncidentsPaginate(); //dd($tp_incidents);
+        return view('incidents::types_incidents', compact('tp_incidents'));
     }
 
     /**
@@ -37,7 +36,7 @@ class IncidentsController extends Controller
      */
     public function create()
     {
-        return view('incidents::create');
+        return view('incidents::create_type');
     }
 
     /**
@@ -45,16 +44,16 @@ class IncidentsController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(IncidentsSaveRequest $request)
+    public function store(TypeIncidentsSaveRequest $request)
     {
         $data = $request->all(); 
-        if( $this->incident_repository->save($data) )
+        if( $this->type_incident_repository->save($data) )
         {
             alert()->success('Item criado com sucesso','');
         }else{
             alert()->warning('Ocorreu um erro, tente novamente','');
         }
-        return response()->redirectToRoute('incidents.index');
+        return response()->redirectToRoute('tp_incidents.index');
     }
 
 
@@ -65,8 +64,8 @@ class IncidentsController extends Controller
      */
     public function edit($id)
     {
-        $data = $this->incident_repository->edit($id); 
-        return view('incidents::edit',compact('data'));
+        $data = $this->type_incident_repository->edit($id); 
+        return view('incidents::edit_type',compact('data'));
     }
 
     /**
@@ -78,13 +77,13 @@ class IncidentsController extends Controller
     public function update(Request $request)
     {
         $data = $request->all(); 
-        if( $this->incident_repository->update($data) )
+        if( $this->type_incident_repository->update($data) )
         {
             alert()->success('Item criado com sucesso','');
         }else{
             alert()->warning('Ocorreu um erro, tente novamente','');
         }
-        return response()->redirectToRoute('incidents.index');
+        return response()->redirectToRoute('tp_incidents.index');
     }
 
     /**
@@ -95,7 +94,7 @@ class IncidentsController extends Controller
     public function destroy(Request $request)
     {
         $data = $request->all(); 
-        if (Incident::findOrFail($data['id'])->delete() ) {
+        if (TypesIncident::findOrFail($data['id'])->delete() ) {
             $message = ['msg' => 'Item deletado', 'delete'=>1];
         } else {
             $message = ['msg' => 'O item não foi deletado!!!', 'delete'=>0];

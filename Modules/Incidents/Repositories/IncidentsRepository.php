@@ -2,19 +2,13 @@
 
 namespace Modules\Incidents\Repositories;
 
-use Modules\Incidents\Entities\TypesIncident;
 use Modules\Incidents\Entities\Incident;
 
 class IncidentsRepository 
 {
-	public function getTypesIncidents()
-	{
-		return TypesIncident::pluck('title','id');
-	}
-
 	public function getIncidents()
 	{
-		return Incident::paginate(8);
+		return Incident::orderBy('created_at','DESC')->paginate(8);
 	}
 
 	public function save(array $data=[])
