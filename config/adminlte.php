@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'Econd',
+    'title' => 'TESTE',
 
     'title_prefix' => '',
 
@@ -31,8 +31,8 @@ return [
     */
 
 
-    'logo' => '<img src="/img/logo-company-mini.png">',
-    'logo_mini' => '<b>Econd</b>',
+    'logo' => '<img src="/img/laravel_logo.png">',
+    'logo_mini' => '<b>DEV</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,81 +108,17 @@ return [
     */
 
     'menu' => [
+            
         [
-            'text'    => 'Condominios',
-            'icon'    => 'university',
-            'can'     => 'menu_condominios',
-            'submenu' => [
-                [
-                    'text' => 'Listar',
-                    'url'  => '/condominios',
-                    'can'  => 'view_condominios'
-                ],
-            ],
+            'text' => 'Registrar Incidente',
+            'url'  => 'incidents/create',
+            'icon' => 'save',
         ],
         [
-            'text' => 'Perfil',
-            'url'  => 'settings/roles',
-            'icon' => 'lock',
-            'can'  => 'view_roles'
+            'text' => 'Listar Incidents',
+            'url'  => 'incidents/index',
+            'icon' => 'list',
         ],
-        [
-            'text' => 'Permissões',
-            'url'  => 'settings/permissions',
-            'icon' => 'lock',
-            'can'  => 'view_permissions'
-        ],
-        [
-            'text' => 'Moradores',
-            'url'  => 'settings/users',
-            'icon' => 'user',
-            'can'  => 'view_users'
-        ],
-        [
-            'text' => 'Vagas',
-            'url'  => 'settings/users',
-            'icon' => 'automobile',
-            'can'  => 'view_users',
-            'submenu' => [
-                [
-                    'text' => 'Vaga do Usuário',
-                    'icon'    => 'minus',
-                    'url'  => '/condominios',
-                    'can'  => 'view_condominios'
-                ],
-                [
-                    'text' => 'Castrar Tipo',
-                    'icon'    => 'minus',
-                    'url'  => '/condominios',
-                    'can'  => 'view_condominios'
-                ],
-                [
-                    'text' => 'Número de Vagas',
-                    'icon'    => 'minus',
-                    'url'  => '/condominios',
-                    'can'  => 'view_condominios'
-                ],
-            ],
-        ],
-        [
-            'text' => 'Zonas',
-            'url'  => 'settings/users',
-            'icon' => 'object-group',
-            'can'  => 'view_users'
-        ],
-        [
-            'text' => 'Torres',
-            'url'  => 'settings/users',
-            'icon' => 'building',
-            'can'  => 'view_users'
-        ],
-        [
-            'text' => 'Áreas',
-            'url'  => 'settings/users',
-            'icon' => 'building',
-            'can'  => 'view_users'
-        ],
-
     ],
 
     /*

@@ -162,8 +162,6 @@ return [
         
         Collective\Html\HtmlServiceProvider::class,
 
-       // App\Cidades\LaravelTenantMigrateServiceProvider::class,
-
         // sweetalert
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
@@ -218,8 +216,6 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
-        'CustomHelper' => App\Helpers\CustomHelper::class,
-        'ReportHelper' => App\Helpers\ReportHelper::class,
 
     ],
 

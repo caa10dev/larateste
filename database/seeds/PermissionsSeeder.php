@@ -12,14 +12,7 @@ class PermissionsSeeder extends Seeder
      */
     public function run()
     {
-        // Seed the default permissions
-        $permissions = Permission::defaultPermissions();
-
-        foreach ($permissions as $name => $label) {
-            Permission::firstOrCreate(['name' => $name, 'label' => $label]);
-        }
-
-        $this->command->info('Permissões iniciais criadas.');
+        //
 
     }
 }
